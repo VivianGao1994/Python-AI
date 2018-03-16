@@ -1,0 +1,343 @@
+def 函数
+DRY rule：In software,don't repeat yourself
+In [35]:
+def function_name(parameters):
+    expressions
+In [36]:
+def double_print(object1,object2):
+    print(object1 *2,object2 * 2)
+    
+double_print('Adi',4.2)
+AdiAdi 8.4
+函数默认参数
+In [37]:
+def sale_robot(price, sex, brand='Adidas',is_second_hand=False):
+    print('price:',price,
+         'sex:',sex,
+         'brand:', brand,
+         'is_second_hand:', is_second_hand,)
+
+sale_robot('100dollar', 'female')
+price: 100dollar sex: female brand: Adidas is_second_hand: False
+In [ ]:
+if __name__ == '__main__': 
+    #  自调用
+In [ ]:
+def report(name, *grades): # *grades使用* 来装饰，表明是可变参数，是可迭代的对象
+    total_grade = 0
+    for grade in grades:
+        total_grade += grade
+    print(name, 'total grade is', total_grade)
+
+report('Adi', 100,99,98)    
+report('Jerry', 100)
+In [ ]:
+def portrait(name, **kw): # **kw,表明是关键字参数
+    print('name is', name)
+    for k,v in kw.items(): #items 字典(Dictionary) items() 函数以列表返回可遍历的(键, 值) 元组数组。
+        print(k,v) # k is key，v is value
+        
+portrait('Jerry', age = 29, country='China',education='Master',skill='Python')
+通过可变参数和关键字参数，任何函数都可以用 universal_func(*args, kw) 表达
+变量形式
+全局变量
+局部变量
+Class类
+In [ ]:
+class Calculator: # 首字母大写
+    name = 'Suck Calculator' # class 的属性 name 
+    price = 18
+    def add(self,x,y): # self 是默认值
+        print(self.name)
+        result = x + y
+        print(result)
+    def minus(self,x,y):
+        result=x-y
+        print(result)
+    def times(self,x,y):
+        print(x*y)
+    def divide(self,x,y):
+        print(x/y)
+In [ ]:
+cal = Calculator() # must type()
+cal.name
+In [ ]:
+cal.price
+In [ ]:
+cal.add(13,34)
+In [ ]:
+cal.minus(23,23)
+In [ ]:
+cal.divide(34,45)
+In [ ]:
+5 == True # 问 Computer，5是否等于 True？
+input
+In [ ]:
+a_input=input('please input a number:')
+print('this number is:',a_input)
+In [ ]:
+a_input=int(input('please input a number')) # define int
+if a_input==1:
+    print('This is a good one')
+elif a_input==2:
+    print('See you next time')
+else:
+    print('Good luck')
+In [ ]:
+score=int(input('Please input your socre: \n'))
+if score>=90:
+    print('Congradulation, you get an A')
+elif score>=80:
+    print('You get a B')
+elif score>=70:
+    print('You get a C')
+elif score>=60:
+    print("You get a D")
+else:
+    print('Sorry, you are failed')
+元组 Tuple，列表 list，字典 Dictionary
+In [ ]:
+a_tuple = (12,3,5,15,6)
+another_tuple = (3,34,5,66,453)
+print(a_tuple)
+print(another_tuple)
+In [ ]:
+another_boring_list = [1,3,5,5,5,]
+In [ ]:
+for content in a_tuple:
+    print(content)
+
+for v in another_boring_list:
+    print(v)
+In [ ]:
+for index in range(len(another_boring_list)):
+    print("index=",index,", number in list = ",another_boring_list[index])
+    
+for index in range(len(a_tuple)):
+    print("index=",index,", number in list = ",a_tuple[index])
+In [ ]:
+a = [1,2,4,5,6,6,6]
+a.append(0)
+print(a)
+In [ ]:
+a.insert(1,0)
+print(a)
+In [ ]:
+a.remove(6)
+print(a)
+In [ ]:
+print(a[-1]) 
+print(a[0:3])
+print(a[5:]) 
+print(a[-3:])
+In [ ]:
+print(a.index(6))
+In [ ]:
+print(a.count(6))
+In [ ]:
+a = [1,2,3,4,5]
+multi_dim_a = [[1,2,3],[2,3,4],[3,4,5]] # 三行三列
+In [ ]:
+print(multi_dim_a[2])
+print(multi_dim_a[2][1])
+In [ ]:
+a_list = [1,2,3,4,5,6,7,8]
+d1 = {'apple':1, 'pear':2, 'orange':3}
+d2 = {1:'a', 2:'b', 3:'c'}
+d3 = {1:'a', 'b':2, 'c':3}
+In [ ]:
+print(d1['apple'])
+In [ ]:
+del d1['pear']
+print(d1)
+In [ ]:
+d1['banana'] = 28
+print(d1)
+In [ ]:
+def func():
+    return 0
+d4 = {'apple':[1,2,3], 'pear':{1:3, 3:'a'}, 'orange':func}
+print(d4['pear'][3])    # a
+continue & break
+In [ ]:
+a = True
+while a:
+    b=input('type some stuff')
+    if b=='1':
+       a=False # 根据False的返回值，会执行下面的代码语句
+    else:
+        pass
+    print('still in while')
+print('running finish')
+In [ ]:
+a = True
+while a:
+    b=input('type some stuff')
+    if b=='1':
+        break  #  break 直接终止，不执行下面的语句
+    else:
+        pass # pass是空语句，是为了保持程序结构的完整性。
+             # 不做任何事情，一般用做占位语句。
+    print('still in while')
+print('running finish')
+Try 错误处理
+In [1]:
+try:
+    file=open('eeee.txt', 'r') # error must occur 
+except Exception as e: # 将报错
+    print(e)
+[Errno 2] No such file or directory: 'eeee.txt'
+In [2]:
+try:
+    file = open('eeee.txt','r+')
+except Exception as e:
+    print(e)
+    response = input('do you want to create a new file:')
+    if response=='y':
+        file = open('eeee.txt','w')
+    else:
+        pass
+else:
+    file.write('ssss')
+    file.close()
+[Errno 2] No such file or directory: 'eeee.txt'
+do you want to create a new file:2
+Zip lamdba map
+In [3]:
+a = [1,2,3]
+b = [4,5,6]
+
+zip(a,b)
+Out[3]:
+<zip at 0x1030b6808>
+In [7]:
+# add list() to visulize it
+print(list(zip(a,b)))
+[(1, 4), (2, 5), (3, 6)]
+In [9]:
+ab = zip(a,b)
+print(list(ab))
+for i,j in zip(a,b): # 直接用 ab 不行
+    print(i/2, j*2)
+[(1, 4), (2, 5), (3, 6)]
+0.5 8
+1.0 10
+1.5 12
+In [13]:
+fun= lambda x,y:x+y  # pythonic 崇尚简洁
+x = int(input('x='))
+y = int(input('y='))
+print(fun(x,y))
+x=2
+y=4
+6
+In [14]:
+# map是把函数和参数绑在一起
+def fun(x,y):
+    return (x+y)
+list(map(fun,[1],[2]))
+Out[14]:
+[3]
+In [15]:
+list(map(fun,[1,2],[3,4]))
+Out[15]:
+[4, 6]
+In [16]:
+import copy
+
+a = [3,4,5]
+
+a = b
+
+id(a)
+Out[16]:
+4346045960
+In [17]:
+id(b) #  两者 id（内存中的地址） 雷同，改一个，另一个也会同步更改
+Out[17]:
+4346045960
+In [20]:
+# 浅拷贝 拷贝的最外围的对象本身，内部的元素只是拷贝了一个引用
+c = copy.copy(a)
+id(c)
+Out[20]:
+4344779336
+In [21]:
+c[1] = 2222
+print(c,a)
+[4, 2222, 6] [4, 5, 6]
+In [22]:
+a=[1,2,[3,4]]
+d=copy.copy(a)
+id(a)==id(c)
+Out[22]:
+False
+In [23]:
+id(a[2])==id(d[2])
+Out[23]:
+True
+In [24]:
+a[2][0]=333
+d # 更改了a的内部元素，d的列表元素也同步更新
+Out[24]:
+[1, 2, [333, 4]]
+In [26]:
+# deepcopy no change 
+
+e = copy.deepcopy(a)
+
+a[2][0]=23333
+
+e
+Out[26]:
+[1, 2, [23333, 4]]
+Pickle
+In [27]:
+import pickle
+
+a_dict = {'da': 111, 2: [23,1,4], '23': {1:2,'d':'sad'}}
+
+file = open('pickle_example.pickle','wb')
+pickle.dump(a_dict, file)
+file.close()
+In [28]:
+# reload a file to a variable
+with open('pickle_example.pickle', 'rb') as file:
+    a_dict1 = pickle.load(file)
+print(a_dict)
+{'da': 111, 2: [23, 1, 4], '23': {1: 2, 'd': 'sad'}}
+Set 找不同
+In [29]:
+char_list = ['a', 'b', 'c', 'c', 'd', 'd', 'd']
+
+sentence = 'Welcome Back to This Tutorial'
+In [30]:
+print(set(char_list))
+print(set(sentence))
+{'a', 'd', 'b', 'c'}
+{'B', 'W', 'm', 'u', 'T', 's', 'o', 'h', 'r', 'c', 'a', 't', 'l', ' ', 'i', 'e', 'k'}
+In [35]:
+unique = set(char_list)
+unique.add('x')
+print(unique)
+{'d', 'a', 'c', 'b', 'x'}
+In [36]:
+unique.remove('x')
+unique.discard('d')
+In [37]:
+print(unique)
+{'a', 'c', 'b'}
+In [40]:
+unique.clear() # 元素全清了
+In [41]:
+unique
+Out[41]:
+set()
+In [42]:
+unique_char = set(char_list)
+print(unique_char.difference({'a', 'e', 'i'}))
+{'b', 'd', 'c'}
+In [43]:
+print(unique_char.intersection({'a', 'e', 'i'}))
+{'a'}
+In [ ]:
